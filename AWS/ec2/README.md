@@ -73,10 +73,10 @@ module "ec2" {
     { Role = "worker" }
   ]
 }
-
+```
 
 <!-- BEGIN_TF_DOCS:inputs --> <!-- END_TF_DOCS:inputs --> 
-<!-- BEGIN_TF_DOCS:outputs --> <!-- END_TF_DOCS:outputs --> 
+<!-- BEGIN_TF_DOCS:outputs --> <!-- END_TF_DOCS:outputs -->
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 

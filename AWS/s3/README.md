@@ -143,6 +143,7 @@ module "s3_logging_kms" {
 
 <!-- BEGIN_TF_DOCS:inputs --> <!-- END_TF_DOCS:inputs --> 
 <!-- BEGIN_TF_DOCS:outputs --> <!-- END_TF_DOCS:outputs --> 
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
