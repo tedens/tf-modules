@@ -1,0 +1,37 @@
+name: Terraform Docs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  terraform-docs:
+    name: Generate terraform-docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Install terraform-docs
+        run: |
+          curl -sSLo terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/v0.17.0/terraform-docs-v0.17.0-linux-amd64.tar.gz
+          tar -xzf terraform-docs.tar.gz terraform-docs
+          chmod +x terraform-docs
+          sudo mv terraform-docs /usr/local/bin/
+
+      - name: Run terraform-docs
+        run: |
+          terraform-docs markdown table ./modules/vpc --output-file README.md --output-mode inject
+
+      - name: Commit README update
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add ./modules/vpc/README.md || echo "No changes to add"
+          git commit -m "docs: update terraform-docs for vpc module" || echo "No changes to commit"
+          git push || echo "No changes to push"

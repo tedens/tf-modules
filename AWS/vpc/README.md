@@ -45,6 +45,9 @@ module "vpc" {
 }
 
 
+<!-- BEGIN_TF_DOCS:inputs --> <!-- END_TF_DOCS:inputs --> 
+<!-- BEGIN_TF_DOCS:outputs --> <!-- END_TF_DOCS:outputs --> 
+
 ## Providers
 
 | Name | Version |
